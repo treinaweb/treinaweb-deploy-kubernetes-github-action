@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+
+metadata:
+  name: twjobs-issuer
+
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: cleysonph@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-tls
+    solvers:
+      - http01:
+          ingress:
+            class: nginx

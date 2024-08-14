@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: twjobs-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: twjobs-issuer
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: twjobs.cleysonph.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: twjobs-clusterip
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - twjobs.cleysonph.dev
+      secretName: letsencrypt-tls

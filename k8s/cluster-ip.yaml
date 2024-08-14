@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 
 metadata:
-  name: twjobs-loadbalancer
+  name: twjobs-clusterip
   labels:
     app: twjobs
 
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: twjobs
   ports:
