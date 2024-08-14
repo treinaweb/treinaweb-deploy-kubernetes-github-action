@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mysql:8.1.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: twjobs
+    ports:
+      - "3306:3306"
+    networks:
+      - twjobs
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 2s
+      timeout: 20s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - twjobs
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILE: prod
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: twjobs
+      DB_USER: root
+      DB_PASSWORD: root
+      JWT_ACCESS_SECRET: ae3fb3552fd9ba99dc5369e39c28b04aedb63aa0dd81cdc233f71d3a760ed710
+      JWT_ACCESS_EXPIRES_IN: 3600
+      JWT_REFRESH_SECRET: d3ad342c7d75f61bd3ea63a4360d1e40e2f5fde153b61c028cee9615bd80fff4
+      JWT_REFRESH_EXPIRES_IN: 86400
+
+networks:
+  twjobs:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
