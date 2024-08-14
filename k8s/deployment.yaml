@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: twjobs-deployment
+  labels:
+    app: twjobs
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: twjobs
+  template:
+    metadata:
+      labels:
+        app: twjobs
+    spec:
+      containers:
+        - name: twjobs
+          image: cleysonph/twjobs:v1
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: twjobs-configmap

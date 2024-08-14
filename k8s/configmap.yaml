@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: twjobs-configmap
+  labels:
+    app: twjobs
+
+data:
+  SPRING_PROFILE: prod
+  DB_HOST: twjobs-db-do-user-12740575-0.d.db.ondigitalocean.com
+  DB_PORT: "25060"
+  DB_NAME: defaultdb
+  DB_USER: doadmin
+  DB_PASSWORD: AVNS_Duhgtwloa2XaVK6FaV5
+  JWT_ACCESS_SECRET: ae3fb3552fd9ba99dc5369e39c28b04aedb63aa0dd81cdc233f71d3a760ed710
+  JWT_ACCESS_EXPIRES_IN: "3600"
+  JWT_REFRESH_SECRET: d3ad342c7d75f61bd3ea63a4360d1e40e2f5fde153b61c028cee9615bd80fff4
+  JWT_REFRESH_EXPIRES_IN: "86400"
