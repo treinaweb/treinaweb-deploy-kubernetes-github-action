@@ -1,0 +1,28 @@
+GET {{baseUrl}}/api/skills
+
+###
+
+GET {{baseUrl}}/api/skills/1
+
+###
+
+POST {{baseUrl}}/api/skills
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQGF2bWFrZXJzLmNvbS5iciIsImlhdCI6MTcyMzE2NTQzNCwiZXhwIjoxNzIzMTY5MDM0fQ.3Pw2dIPiuLQyDJaYNUcBDMN5JVs-KzRBguDSmkEeIuCEQdq9zCxLNX_ON-98KEkDTsfGy7BsriCZ3H2e3J7X0Q
+
+{
+    "name": "HTML"
+}
+
+###
+
+PUT {{baseUrl}}/api/skills/1
+Content-Type: application/json
+
+{
+    "name": "Java"
+}
+
+###
+
+DELETE  {{baseUrl}}/api/skills/11

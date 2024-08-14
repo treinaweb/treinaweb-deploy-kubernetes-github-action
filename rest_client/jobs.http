@@ -1,0 +1,55 @@
+GET {{baseUrl}}/api/jobs
+
+###
+
+GET {{baseUrl}}/api/jobs/1
+
+###
+
+POST {{baseUrl}}/api/jobs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQGF2bWFrZXJzLmNvbS5iciIsImlhdCI6MTcyMzIyNTUzNywiZXhwIjoxNzIzMjI5MTM3fQ.6-kwm_6TTmJNaZQCPZKWdvhBjtLnXV-wJu1fe07CyhEJpy2ZCnjB6wKmWSJQrRUE2Vb107XabwjOlCU0D_lbfw
+
+{
+    "title": "Desenvolvedor Java e Spring",
+    "description": "Vaga para um  desenvolvedor Java e Spring",
+    "location": "São Paulo",
+    "level": "MID_LEVEL",
+    "salary": 7500,
+    "type": "FULL_TIME",
+    "skills": [1, 2]
+}
+
+###
+
+PUT {{baseUrl}}/api/jobs/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQGF2bWFrZXJzLmNvbS5iciIsImlhdCI6MTcyMzIyNTUzNywiZXhwIjoxNzIzMjI5MTM3fQ.6-kwm_6TTmJNaZQCPZKWdvhBjtLnXV-wJu1fe07CyhEJpy2ZCnjB6wKmWSJQrRUE2Vb107XabwjOlCU0D_lbfw
+
+{
+    "title": "Desenvolvedor Back-end Java",
+    "description": "Vaga para um desenvolvedor que saiba Java e Spring",
+    "company": "TreinaWeb",
+    "location": "São Paulo",
+    "type": "FULL_TIME",
+    "level": "SENIOR",
+    "salary": 15000.00,
+    "skills": [
+        1, 
+        2,
+        10
+    ]
+}
+
+###
+
+DELETE {{baseUrl}}/api/jobs/3
+
+###
+
+GET {{baseUrl}}/api/jobs/1/skills
+
+###
+
+POST {{baseUrl}}/api/jobs/1/apply
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2FvQG1haWwuY29tIiwiaWF0IjoxNzIzMTY1NTA3LCJleHAiOjE3MjMxNjkxMDd9.BdFnr0hjp81WsJ_GaruMb9Jhav4H2dHvPbAb6Qi2Zf2xWxxksAvzxHrGAQL86BYwNda9BHgsW2R1GCo3QfCNlA

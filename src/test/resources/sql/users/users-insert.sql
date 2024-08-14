@@ -1,0 +1,3 @@
+INSERT INTO `user` (`id`, `email`, `name`, `password`, `role`) VALUES (1,'contato@avmakers.com.br','AVMakers','$2a$10$EFrJzCo6yDeYG6yaxcjzIu/DOToHYTWPcnrOX7vsqdZd95EAJ5GMW','COMPANY');
+INSERT INTO `user` (`id`, `email`, `name`, `password`, `role`) VALUES (2,'joao@mail.com','João da Silva','$2a$10$jDoomd6SlCDzJaxa9y2AWOAA9BbrVPJvXRfFOCFMlu5eC9c.H3yRC','CANDIDATE');
+INSERT INTO `user` (`id`, `email`, `name`, `password`, `role`) VALUES (3,'contato@treinaweb.com.br','Treinaweb','$2a$10$EFrJzCo6yDeYG6yaxcjzIu/DOToHYTWPcnrOX7vsqdZd95EAJ5GMW','COMPANY');

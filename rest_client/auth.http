@@ -1,0 +1,43 @@
+# name: RegisterCompany
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "AVMakers",
+    "email": "contato@avmakers.com.br",
+    "password": "senha@123",
+    "role": "COMPANY"
+}
+
+###
+
+# name: RegisterCandidate
+
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "João da Silva",
+    "email": "joao@mail.com",
+    "password": "senha@123",
+    "role": "CANDIDATE"
+}
+
+###
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "contato@avmakers.com.br",
+    "password": "senha@123"
+}
+
+###
+
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjU3NDQ2LCJleHAiOjE3MDg2NjEwNDZ9.SlJsXW12JHobn-O7JcUKl7O840ddJrp0769sIN94W2hISWwPjJmHNhpj5NxkH3prKkLlVpW3egu5zELIYfcNlA"
+}
