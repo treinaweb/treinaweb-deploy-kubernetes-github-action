@@ -18,9 +18,27 @@ spec:
     spec:
       containers:
         - name: twjobs
-          image: cleysonph/twjobs:v1
+          image: cleysonph/twjobs:v3
           ports:
             - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: twjobs-configmap
+          startupProbe:
+            httpGet:
+              path: /api/ping
+              port: 8080
+            periodSeconds: 2
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /api/ping
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/ping
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3
