@@ -10,3 +10,7 @@ jobs:
   run-test:
     uses: ./.github/workflows/test.yaml
     secrets: inherit
+
+  run-deploy:
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit
