@@ -74,4 +74,4 @@ jobs:
         run: kubectl apply -f k8s
 
       - name: Set Deployment Image
-        run: kubectl set image deployment twjobs-deployment twjobs=cleysonph/twjobs:${{ steps.meta.outputs.tags }}
+        run: kubectl set image deployment twjobs-deployment twjobs=${{ steps.meta.outputs.tags }}
