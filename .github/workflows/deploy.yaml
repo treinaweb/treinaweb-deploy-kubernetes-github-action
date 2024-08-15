@@ -45,7 +45,7 @@ jobs:
       - name: Set up kubectl
         uses: matootie/dokube@v1.4.1
         with:
-          personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           clusterName: twjobs-k8s
 
       - name: Prepare ConfigMap
