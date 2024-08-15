@@ -1,0 +1,12 @@
+name: cd
+run-name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-test:
+    uses: ./.github/workflows/test.yaml
+    secrets: inherit
