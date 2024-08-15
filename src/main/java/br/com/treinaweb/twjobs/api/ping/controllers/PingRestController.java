@@ -12,7 +12,7 @@ public class PingRestController {
 
     @GetMapping
     public Map<String, String> ping() {
-        return Map.of("message", "pong da V3");
+        return Map.of("message", "pong do GitHub Actions");
     }
     
 }
