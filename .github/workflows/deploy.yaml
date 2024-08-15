@@ -36,3 +36,42 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Set up kubectl
+        uses: matootie/dokube@v1.4.1
+        with:
+          personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          clusterName: twjobs-k8s
+
+      - name: Prepare ConfigMap
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
+          JWT_ACCESS_EXPIRES_IN: ${{ secrets.JWT_ACCESS_EXPIRES_IN }}
+          JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
+          JWT_REFRESH_EXPIRES_IN: ${{ secrets.JWT_REFRESH_EXPIRES_IN }}
+        run: |
+          sed -i "s/{{ DB_HOST }}/$DB_HOST/" k8s/configmap.yaml
+          sed -i "s/{{ DB_PORT }}/$DB_PORT/" k8s/configmap.yaml
+          sed -i "s/{{ DB_NAME }}/$DB_NAME/" k8s/configmap.yaml
+          sed -i "s/{{ DB_USER }}/$DB_USER/" k8s/configmap.yaml
+          sed -i "s/{{ DB_PASSWORD }}/$DB_PASSWORD/" k8s/configmap.yaml
+          sed -i "s/{{ JWT_ACCESS_SECRET }}/$JWT_ACCESS_SECRET/" k8s/configmap.yaml
+          sed -i "s/{{ JWT_ACCESS_EXPIRES_IN }}/$JWT_ACCESS_EXPIRES_IN/" k8s/configmap.yaml
+          sed -i "s/{{ JWT_REFRESH_SECRET }}/$JWT_REFRESH_SECRET/" k8s/configmap.yaml
+          sed -i "s/{{ JWT_REFRESH_EXPIRES_IN }}/$JWT_REFRESH_EXPIRES_IN/" k8s/configmap.yaml
+
+      - name: Apply K8s Files
+        run: kubectl apply -f k8s
+
+      - name: Set Deployment Image
+        run: kubectl set image deployment twjobs-deployment twjobs=cleysonph/twjobs:${{ steps.meta.outputs.tags }}
